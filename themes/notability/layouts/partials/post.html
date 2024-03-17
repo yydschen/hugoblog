@@ -1,0 +1,25 @@
+<article class="articleItem articleItem__withImage">
+    {{ if .Content }}
+    {{ $urls := findRE "<img src=\"[^\"|\\\"]*\"" .Content }} {{ if $urls }} {{ $url :=index ($urls) 0 }} {{ $url
+        :=(strings.TrimPrefix "<img src=\"" $url) }}
+{{ $url := strings.TrimRight " \"" $url }} <img src="{{ $url }}" class="cover" /> {{ end }} {{ end }}
+    <div class="content">
+        <h2 class="title">
+            <a href="{{ .Permalink }}">
+                {{ .Title }}
+            </a>
+        </h2>
+        <div class="summary">{{ .Summary | truncate 60 }}</div>
+        <div class="time"><time datetime='{{.Date.Format "2006-01-02 15:04:01" }}' class="humane--time">{{ .Date
+                | time.Format
+                ":date_long"
+                }}</time>
+            {{ if .Params.categories }}
+            <span class="dot"></span>
+            {{ range (.GetTerms "categories") }}
+            <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</article>

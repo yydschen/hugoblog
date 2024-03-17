@@ -1,0 +1,47 @@
+baseURL = 'https://chenvlog.com/'
+languageCode = 'zh-cn'
+defaultContentLanguage = 'zh-cn'
+title = '老陳网志'
+theme = 'puppy'
+
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  series = 'series'
+
+[Params]
+  search=false
+  description = 'A simple and fast blog framework written in Go.'
+  toc = true
+  mainSections = ['posts']
+
+[outputs]
+  home = [ "HTML","JSON","RSS","SITEMAP"]
+  page = ["HTML"]
+
+[menu]
+ [[menu.main]]
+	name="首页"
+	url="/"
+	weight="1"
+  [[menu.main]]
+    name="分类"
+    url="/categories/"
+    weight="2"
+  [[menu.main]]
+    name="文章"
+    url="/posts/"
+    weight="3"
+  [[menu.main]]
+    name="标签"
+    url="/tags/"
+    weight="4"
+  [[menu.main]]
+    name="设备"
+    url="/gears/"
+    weight="5"
+  [[menu.main]]
+     name="书影音"
+    url="/movies/"
+    weight="6" 
